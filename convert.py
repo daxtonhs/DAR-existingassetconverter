@@ -2,7 +2,7 @@ import os
 
 path = "/home/datd-tech/Data/3d Models"
 
-folders = [f for f in os.listdir(path) if os.path.isdir(os.path.join(path, f))]
+folders = [os.path.join(path, f) for f in os.listdir(path) if os.path.isdir(os.path.join(path, f))]
 
 folder = folders[0]
 
