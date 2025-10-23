@@ -6,6 +6,8 @@ folders = [os.path.join(path, f) for f in os.listdir(path) if os.path.isdir(os.p
 
 folder = folders[1]
 
+print(folder)
+
 allowed_ext = ["jpg", "png"]
 
 images = [image for image in os.listdir(folder) if image.split(".")[-1] in allowed_ext]
