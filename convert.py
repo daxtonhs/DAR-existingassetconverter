@@ -4,7 +4,7 @@ path = "/home/datd-tech/Data/3d Models"
 
 folders = [os.path.join(path, f) for f in os.listdir(path) if os.path.isdir(os.path.join(path, f))]
 
-folder = folders[0]
+folder = folders[1]
 
 allowed_ext = ["jpg", "png"]
 
