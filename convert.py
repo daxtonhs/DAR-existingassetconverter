@@ -20,10 +20,14 @@ def find_thumbnail_for_model_dir(model_dir):
     if not images:
         return None, 0
 
+    # fix: allow **kwargs
+    def scorer(a, b, **kwargs):
+        return fuzz.ratio(os.path.splitext(os.path.basename(b))[0], a)
+
     best_match = process.extractOne(
         dir_name,
         images,
-        scorer=lambda a, b: fuzz.ratio(os.path.splitext(os.path.basename(b))[0], a)
+        scorer=scorer
     )
 
     return best_match[0], best_match[1]
