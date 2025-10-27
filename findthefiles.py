@@ -4,6 +4,7 @@ lookpath = "/home/datd-tech/Data/3d Models"
 
 contents = os.listdir(lookpath)
 for item in contents:
+    print(item)
     if(os.path.isdir(item)):
         assetName = os.path.basename(item)
 
