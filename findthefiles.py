@@ -29,7 +29,7 @@ for item in contents:
         for file in files:
             for tag in tags:
                 for check in tags[tag]:
-                    if(check in os.path.basename(file) and tag not in tagsList):
+                    if(check in os.path.basename(file).lower() and tag not in tagsList):
                         tagsList.append(tag)
 
         print(tagsList)
