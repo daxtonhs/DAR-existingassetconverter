@@ -5,10 +5,11 @@ lookpath = "/home/datd-tech/Data/3d Models"
 contents = os.listdir(lookpath)
 for item in contents:
     print(item)
-    if(os.path.isdir(item)):
-        assetName = os.path.basename(item)
+    fullpath = os.path.join(lookpath, item)
+    if(os.path.isdir(fullpath)):
+        assetName = os.path.basename(fullpath)
 
-        files = os.listdir(item)
+        files = os.listdir(fullpath)
         image_files = [f for f in files if f.lower().endswith(('.png', '.jpg', '.jpeg'))]
 
         if image_files:
