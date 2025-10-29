@@ -1,6 +1,18 @@
 import os
+import mariadb
+
 
 lookpath = "/home/datd-tech/Data/3d Models"
+
+conn = mariadb.connect(
+    user="assetrepo",
+    password="RedR0cks%%",
+    host="localhost",
+    port=3306, 
+    database="assets"
+)
+
+cur = conn.cursor()
 
 contents = os.listdir(lookpath)
 for item in contents:
@@ -12,6 +24,7 @@ for item in contents:
         files = os.listdir(fullpath)
         image_files = [f for f in files if f.lower().endswith(('.png', '.jpg', '.jpeg'))]
 
+        thumbnail = None
         if image_files:
             thumbnail = min(image_files)
         else:
@@ -32,5 +45,21 @@ for item in contents:
                     if(check in os.path.basename(file).lower() and tag not in tagsList):
                         tagsList.append(tag)
 
-        print(tagsList)
+        tags = ','.join(tagsList)
+        title = assetName
+        imagePath = thumbnail if thumbnail else ""
+        assetPath = fullpath
+
+        print(tags, title, imagePath, assetPath)
         input()
+
+        cur.execute(
+            """
+            insert into AssetList (Title, ImagePath, Tags, AssetPath)
+            values (?, ?, ?, ?)
+            """,
+            (title, imagePath, tags, assetPath)
+        )
+
+conn.commit()
+
