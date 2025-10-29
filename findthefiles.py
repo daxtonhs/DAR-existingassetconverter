@@ -51,8 +51,6 @@ for item in contents:
         assetPath = fullpath
 
         print(tags, title, imagePath, assetPath)
-        input()
-
         cur.execute(
             """
             insert into AssetList (Title, ImagePath, Tags, AssetPath)
