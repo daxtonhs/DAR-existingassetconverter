@@ -1,5 +1,4 @@
-import os
-import mariadb
+import os, mariadb, shutil
 
 
 lookpath = "/home/datd-tech/Data/3d Models"
@@ -14,7 +13,9 @@ conn = mariadb.connect(
 
 cur = conn.cursor()
 
-os.makedirs("thumbnails", exist_ok=True)
+thumbnailPath = os.path.join(lookpath, "thumbnails")
+
+os.makedirs(thumbnailPath, exist_ok=True)
 
 
 contents = os.listdir(lookpath)
@@ -32,6 +33,11 @@ for item in contents:
             thumbnail = min(image_files)
         else:
             continue
+        
+        
+        finalThumbnail = os.path.join(thumbnailPath, thumbnail)
+
+        shutil.copyfile(thumbnail, finalThumbnail) #copying thumbnail to thumbnail path
 
         fileCheckTags = {
             "Model": [".fbx", ".obj", ".stl", ".glb"],
@@ -82,13 +88,14 @@ for item in contents:
             """
             tags.remove("Texture") 
 
+        rootpath = os.path.abspath(fullpath)
 
-        
+        shutil.make_archive(assetName, 'zip', root_dir=rootpath, base_dir=fullpath)
 
         title = assetName
-        imagePath = thumbnail
-
-        assetPath = fullpath
+        imagePath = finalThumbnail
+        
+        assetPath = fullpath + ".zip"
 
         print(tags, title, imagePath, assetPath)
         cur.execute(
