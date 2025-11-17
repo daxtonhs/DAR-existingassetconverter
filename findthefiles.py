@@ -79,9 +79,6 @@ for item in contents:
                     if(check in os.path.basename(file).lower() and tag not in tagsList):
                         tagsList.append(tag)
 
-        tags = ','.join(tagsList)
-        print(tags)
-
         #Minor post processing
         if("Model" in tags and "Texture" in tags):
             """Removing the texture tag from the object if it contains
@@ -89,6 +86,8 @@ for item in contents:
             will cause confusion when being marked as an object & texture
             """
             tags.remove("Texture") 
+
+        tags = ','.join(tagsList)
 
         rootpath = os.path.abspath(fullpath)
 
