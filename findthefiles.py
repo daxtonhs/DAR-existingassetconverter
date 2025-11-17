@@ -36,8 +36,9 @@ for item in contents:
         
         
         finalThumbnail = os.path.join(thumbnailPath, thumbnail)
+        origThumbnail = os.path.join(fullpath, thumbnail)
 
-        shutil.copyfile(thumbnail, finalThumbnail) #copying thumbnail to thumbnail path
+        shutil.copyfile(origThumbnail, finalThumbnail) #copying thumbnail to thumbnail path
 
         fileCheckTags = {
             "Model": [".fbx", ".obj", ".stl", ".glb"],
