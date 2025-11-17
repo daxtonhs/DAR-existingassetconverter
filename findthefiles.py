@@ -80,6 +80,7 @@ for item in contents:
                         tagsList.append(tag)
 
         tags = ','.join(tagsList)
+        print(tags)
 
         #Minor post processing
         if("Model" in tags and "Texture" in tags):
