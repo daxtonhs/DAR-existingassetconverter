@@ -21,7 +21,7 @@ os.makedirs(thumbnailPath, exist_ok=True)
 contents = os.listdir(lookpath)
 for item in contents:
     print(item)
-    fullpath = os.path.join(lookpath, item)
+    fullpath = os.path.normpath(os.path.join(lookpath, item))
     if(os.path.isdir(fullpath)):
         assetName = os.path.basename(fullpath)
 
