@@ -91,7 +91,7 @@ for item in contents:
 
         rootpath = os.path.abspath(fullpath)
 
-        print("rp", rootpath)
+        print("rp", rootpath, "fp", fullpath)
 
         shutil.make_archive(assetName, 'zip', root_dir=rootpath, base_dir=fullpath)
 
