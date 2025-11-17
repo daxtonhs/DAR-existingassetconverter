@@ -89,7 +89,7 @@ for item in contents:
 
         tags = ','.join(tagsList)
 
-        rootpath = os.path.abspath(fullpath)
+        rootpath = os.path.dirname(fullpath)
 
         print("rp", rootpath, "fp", fullpath)
 
