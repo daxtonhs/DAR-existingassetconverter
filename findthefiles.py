@@ -90,10 +90,11 @@ for item in contents:
         tags = ','.join(tagsList)
 
         rootpath = os.path.basename(fullpath)
+        parentpath = os.path.dirname(fullpath)
 
         print("rp", rootpath, "fp", fullpath)
 
-        shutil.make_archive(assetName, 'zip', root_dir=rootpath, base_dir=fullpath)
+        shutil.make_archive(os.path.join(parentpath, assetName), 'zip', root_dir=rootpath, base_dir=fullpath)
 
         title = assetName
         imagePath = finalThumbnail
