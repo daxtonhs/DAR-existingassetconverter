@@ -80,12 +80,12 @@ for item in contents:
                         tagsList.append(tag)
 
         #Minor post processing
-        if("Model" in tags and "Texture" in tags):
+        if("Model" in tagsList and "Texture" in tagsList):
             """Removing the texture tag from the object if it contains
             3D models as the textures always relate to the 3D model and
             will cause confusion when being marked as an object & texture
             """
-            tags.remove("Texture") 
+            tagsList.remove("Texture") 
 
         tags = ','.join(tagsList)
 
