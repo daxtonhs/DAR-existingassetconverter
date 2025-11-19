@@ -101,7 +101,9 @@ for item in contents:
         
         assetPath = fullpath + ".zip"
 
-        print(tags, title, imagePath, assetPath)
+        os.rmdir(fullpath)
+
+        print(title, imagePath, tags, assetPath)
         cur.execute(
             """
             insert into AssetList (Title, ImagePath, Tags, AssetPath)
