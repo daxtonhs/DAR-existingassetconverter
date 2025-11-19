@@ -23,7 +23,7 @@ for item in contents:
     try:
         print(item)
         fullpath = os.path.normpath(os.path.join(lookpath, item))
-        if(os.path.isdir(fullpath)):
+        if(os.path.isdir(fullpath) and item != 'thumbnails'):
             assetName = os.path.basename(fullpath)
 
             files = os.listdir(fullpath)
