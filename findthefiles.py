@@ -88,6 +88,13 @@ for item in contents:
             tagsList.remove("Texture") 
 
         tags = ','.join(tagsList)
+        title = assetName
+        imagePath = finalThumbnail
+        
+        assetPath = fullpath + ".zip"
+
+
+        print(title, imagePath, tags, assetPath)
 
         rootpath = os.path.basename(fullpath)
         parentpath = os.path.dirname(fullpath)
@@ -96,14 +103,11 @@ for item in contents:
 
         shutil.make_archive(os.path.join(parentpath, assetName), 'zip', root_dir=rootpath, base_dir=fullpath)
 
-        title = assetName
-        imagePath = finalThumbnail
-        
-        assetPath = fullpath + ".zip"
+
 
         os.rmdir(fullpath)
 
-        print(title, imagePath, tags, assetPath)
+        
         cur.execute(
             """
             insert into AssetList (Title, ImagePath, Tags, AssetPath)
