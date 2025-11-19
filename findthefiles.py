@@ -104,9 +104,7 @@ for item in contents:
 
             shutil.make_archive(os.path.join(parentpath, assetName), 'zip', root_dir=rootpath, base_dir=fullpath)
 
-
-
-            os.rmdir(fullpath)
+            shutil.rmtree(fullpath)
 
             
             cur.execute(
