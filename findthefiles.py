@@ -106,7 +106,7 @@ for item in contents:
             
             cur.execute(
                 """
-                insert into AssetList (Title, ImagePath, Tags, AssetPath)
+                insert into assets (Title, ImagePath, Tags, AssetPath)
                 values (?, ?, ?, ?)
                 """,
                 (title, imagePath, tags, assetPath)
