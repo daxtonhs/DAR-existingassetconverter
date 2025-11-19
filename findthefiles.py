@@ -117,7 +117,7 @@ for item in contents:
                 (title, imagePath, tags, assetPath)
             )
     except Exception as e:
-        print("Error warning uh oh bad asset:", fullpath)
+        print("Error warning uh oh bad asset:", fullpath, e)
 
 conn.commit()
 
