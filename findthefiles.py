@@ -103,9 +103,6 @@ for item in contents:
             print("rp", rootpath, "fp", fullpath)
 
             shutil.make_archive(os.path.join(parentpath, assetName), 'zip', root_dir=rootpath, base_dir=fullpath)
-
-            shutil.rmtree(fullpath)
-
             
             cur.execute(
                 """
@@ -114,6 +111,8 @@ for item in contents:
                 """,
                 (title, imagePath, tags, assetPath)
             )
+
+            shutil.rmtree(fullpath)
     except Exception as e:
         print("Error warning uh oh bad asset:", fullpath, e)
 
